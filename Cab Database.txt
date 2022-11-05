@@ -1,0 +1,45 @@
+CAB MANAGEMENT SYSTEM
+
+
+CREATE DATABASE CAB;
+USE CAB;
+
+CREATE TABLE CAB(
+Cab_number INT NOT NULL,
+Cab_name varchar(50)NOT NULL,
+CAB_description varchar(70)NOT NULL,
+CAB_total_capacity INT NOT NULL
+);
+
+CREATE TABLE CABSchedule(
+id int primary key auto_increment,
+pickuppoint varchar(50)NOT NULL,
+destinationpoint VARCHAR(50)NOT NULL,
+CAB_date date NOT NULL,
+CAB_time time NOT NULL,
+cost INT NOT NULL,
+CAB_number INT NOT NULL
+);
+
+alter table CAB add primary key(CAB_number);
+
+CREATE TABLE passenger(
+id INT,
+name varchar(50)not null,
+username varchar(50) not null,
+email varchar(50)not null,
+password varchar (50) not null,
+mobile INT NOT NULL,
+address varchar (50) not null,
+dob date,
+nationality varchar(50) not null,
+gender varchar (7) not null
+);
+
+CREATE TABLE bookedcabticket(
+ticket_number INT not null,
+dateofbooking date not null,
+CABnumber INT NOT NULL,
+CONSTRAINT FK_CABNOBOOKED FOREIGN KEY
+(CABnumber) references CAB(CAB_number) on delete cascade);
+
